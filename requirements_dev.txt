@@ -8,7 +8,7 @@ pre-commit==4.1.0
 pytest==8.3.4
 coverage==7.8.0
 
-# linting
+# linting (check code practice)
 ruff==0.11.6
 
 # docs

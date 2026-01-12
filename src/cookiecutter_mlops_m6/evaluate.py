@@ -7,7 +7,9 @@ from cookiecutter_mlops_m6.data import MyDataset
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "mps" if torch.backends.mps.is_available() else "cpu")
 
 
-def evaluate(model_checkpoint: str = "./models/model.pth") -> None:
+def evaluate(
+    model_checkpoint: str = "./models/model.pth",
+) -> None:
     """Evaluate a trained model."""
     print("Evaluating like my life depended on it")
     print(model_checkpoint)
@@ -21,7 +23,10 @@ def evaluate(model_checkpoint: str = "./models/model.pth") -> None:
     model.eval()
     correct, total = 0, 0
     for img, target in test_dataloader:
-        img, target = img.to(DEVICE), target.to(DEVICE)
+        img, target = (
+            img.to(DEVICE),
+            target.to(DEVICE),
+        )
         y_pred = model(img)
         correct += (y_pred.argmax(dim=1) == target).float().sum().item()
         total += target.size(0)

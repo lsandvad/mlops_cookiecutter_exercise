@@ -7,7 +7,10 @@ from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 
 
-def visualize(model_checkpoint: str = "./models/model.pth", figure_name: str = "embeddings.png") -> None:
+def visualize(
+    model_checkpoint: str = "./models/model.pth",
+    figure_name: str = "embeddings.png",
+) -> None:
     """Visualize model predictions."""
     model: torch.nn.Module = Model()
     model.load_state_dict(torch.load(model_checkpoint))
@@ -35,11 +38,14 @@ def visualize(model_checkpoint: str = "./models/model.pth", figure_name: str = "
     plt.figure(figsize=(10, 10))
     for i in range(10):
         mask = targets == i
-        plt.scatter(embeddings[mask, 0], embeddings[mask, 1], label=str(i))
+        plt.scatter(
+            embeddings[mask, 0],
+            embeddings[mask, 1],
+            label=str(i),
+        )
     plt.legend()
     plt.savefig(f"reports/figures/{figure_name}")
 
 
 if __name__ == "__main__":
     typer.run(visualize)
-

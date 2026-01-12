@@ -2,7 +2,9 @@ import torch
 import typer
 
 
-def normalize(images: torch.Tensor) -> torch.Tensor:
+def normalize(
+    images: torch.Tensor,
+) -> torch.Tensor:
     """Normalize images."""
     return (images - images.mean()) / images.std()
 
@@ -27,13 +29,28 @@ def preprocess_data(raw_dir: str, processed_dir: str) -> None:
     train_images = normalize(train_images)
     test_images = normalize(test_images)
 
-    torch.save(train_images, f"{processed_dir}/train_images.pt")
-    torch.save(train_target, f"{processed_dir}/train_target.pt")
-    torch.save(test_images, f"{processed_dir}/test_images.pt")
-    torch.save(test_target, f"{processed_dir}/test_target.pt")
+    torch.save(
+        train_images,
+        f"{processed_dir}/train_images.pt",
+    )
+    torch.save(
+        train_target,
+        f"{processed_dir}/train_target.pt",
+    )
+    torch.save(
+        test_images,
+        f"{processed_dir}/test_images.pt",
+    )
+    torch.save(
+        test_target,
+        f"{processed_dir}/test_target.pt",
+    )
 
 
-def MyDataset() -> tuple[torch.utils.data.Dataset, torch.utils.data.Dataset]:
+def MyDataset() -> tuple[
+    torch.utils.data.Dataset,
+    torch.utils.data.Dataset,
+]:
     """Return train and test datasets for corrupt MNIST."""
     train_images = torch.load("data/processed/train_images.pt")
     train_target = torch.load("data/processed/train_target.pt")
