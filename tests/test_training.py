@@ -7,7 +7,7 @@ from unittest.mock import patch
 #from model import MyModel
 from src.cookiecutter_mlops_m6.data import corrupt_mnist
 from src.cookiecutter_mlops_m6.model import MyAwesomeModel
-from src.cookiecutter_mlops_m6.main import import train 
+from src.cookiecutter_mlops_m6.main import train 
 #from src.cookiecutter_mlops_m6 import MyModel
 
 @pytest.fixture
