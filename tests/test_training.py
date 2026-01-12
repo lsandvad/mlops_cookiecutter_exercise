@@ -27,7 +27,10 @@ class TestTrain:
         model_path = tmp_path / "model.pth"
         plot_path = tmp_path / "training_statistics.png"
 
-        with patch("torch.save") as mock_save, patch("matplotlib.pyplot.Figure.savefig") as mock_savefig:
+        with (
+            patch("torch.save") as mock_save,
+            patch("matplotlib.pyplot.Figure.savefig") as mock_savefig,
+        ):
             train(lr=1e-3, batch_size=32, epochs=1)
 
             # Verify save methods were called
