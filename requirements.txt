@@ -8,7 +8,7 @@ functions_framework==3.10.0
 hydra-core==1.3.2
 invoke==2.2.1
 joblib==1.5.1
-locustio==0.999
+locust>=2.0
 logfire==4.17.0
 loguru==0.7.3
 Markdown==3.10
