@@ -25,6 +25,7 @@ jobs:
         pip install ruff mypy
         pip list
 
+
     - name: Ruff check
       run: ruff check .
 

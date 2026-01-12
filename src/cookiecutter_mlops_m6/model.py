@@ -17,9 +17,9 @@ class MyAwesomeModel(nn.Module):
         """Forward pass."""
 
         if x.ndim != 4:
-            raise ValueError('Expected input to a 4D tensor')
+            raise ValueError("Expected input to a 4D tensor")
         if x.shape[1] != 1 or x.shape[2] != 28 or x.shape[3] != 28:
-            raise ValueError('Expected each sample to have shape [1, 28, 28]')
+            raise ValueError("Expected each sample to have shape [1, 28, 28]")
 
         x = torch.relu(self.conv1(x))
         x = torch.max_pool2d(x, 2, 2)
@@ -40,4 +40,3 @@ if __name__ == "__main__":
     dummy_input = torch.randn(1, 1, 28, 28)
     output = model(dummy_input)
     print(f"Output shape: {output.shape}")
-    
