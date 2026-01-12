@@ -2,7 +2,7 @@ import torch
 from torch import nn
 
 
-class Model(nn.Module):
+class MyAwesomeModel(nn.Module):
     """My awesome model."""
 
     def __init__(self) -> None:
@@ -15,6 +15,12 @@ class Model(nn.Module):
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         """Forward pass."""
+
+        if x.ndim != 4:
+            raise ValueError('Expected input to a 4D tensor')
+        if x.shape[1] != 1 or x.shape[2] != 28 or x.shape[3] != 28:
+            raise ValueError('Expected each sample to have shape [1, 28, 28]')
+
         x = torch.relu(self.conv1(x))
         x = torch.max_pool2d(x, 2, 2)
         x = torch.relu(self.conv2(x))
@@ -27,10 +33,11 @@ class Model(nn.Module):
 
 
 if __name__ == "__main__":
-    model = Model()
+    model = MyAwesomeModel()
     print(f"Model architecture: {model}")
     print(f"Number of parameters: {sum(p.numel() for p in model.parameters())}")
 
-    # dummy_input = torch.randn(1, 1, 28, 28)
-    # output = model(dummy_input)
-    # print(f"Output shape: {output.shape}")
+    dummy_input = torch.randn(1, 1, 28, 28)
+    output = model(dummy_input)
+    print(f"Output shape: {output.shape}")
+    
