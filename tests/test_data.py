@@ -1,6 +1,6 @@
 #from corrupted_mnist.data import corrupt_mnist
 from data import corrupt_mnist
-from model import MyAwesomeModel
+from model import MyModel
 import torch
 import pytest
 import re

@@ -3,8 +3,8 @@ import torch
 import os
 from pathlib import Path
 from unittest.mock import patch
-from main import train
-from model import MyAwesomeModel
+from train import train
+from model import MyModel
 
 
 @pytest.fixture
