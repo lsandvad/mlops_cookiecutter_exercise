@@ -1,6 +1,8 @@
 #from corrupted_mnist.data import corrupt_mnist
-from data import corrupt_mnist
-from model import MyModel
+#from data import corrupt_mnist
+#from model import MyModel
+from src.cookiecutter_mlops_m6.data import corrupt_mnist
+from src.cookiecutter_mlops_m6.model import MyModel
 import torch
 import pytest
 import re
